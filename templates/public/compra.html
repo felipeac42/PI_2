@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="/compra" method="post">
+    
+    <select name="id_produto">
+        <option selected>Produto</option>
+        {% for prod in prod %}
+            <option value="{{prod.0}}">{{prod.1}}</option>
+        {% endfor %} 
+    </select>
+
+    <input type="number" name="qtde" placeholder="Quantidade">
+    <input type="date" name="data_entrada" placeholder="Data da Compra">
+    <input type="number" name="valor_unitario" placeholder="Valor Unitário">
+    <button type="submit">Cadastrar</button>
+</form>
+
+<h1>Compras</h1> 
+<table> 
+    <thead> 
+        <tr> 
+            <th>Produto</th> 
+            <th>Quantidade</th> 
+            <th>Data da Compra</th> 
+            <th>Valor Unitário</th> 
+        </tr> 
+    </thead> 
+    <tbody> 
+        {% for datum in data %} 
+        <tr> 
+            <td>{{ datum[6] }}</td> 
+            <td>{{ datum[2] }}</td> 
+            <td>{{ datum[4] }}</td> 
+            <td>{{ datum[3] }}</td> 
+            <td><form action="/delete/compra/{{datum.0}}" method="post">
+                <button>Apagar</button>
+            </form></td>
+            <td><a href="/update/compra/{{datum.0}}"><button>Atualizar</button></a></td>
+        </tr> 
+        {% else %}
+            Nao tem compras cadastrados
+        {% endfor %} 
+        
+    </tbody> 
+</table> 
+<a href="/"><button>Voltar</button></a>
+
+{% endblock %}

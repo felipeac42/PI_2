@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="/produto" method="post">
+    <input type="text" name="descricao" placeholder="Descrição do produto">
+    <input type="number" name="estoque_minimo" placeholder="Estoque Mínimo">
+    <input type="number" name="estoque_maximo" placeholder="Estoque Máximo">
+    <button type="submit">Cadastrar</button>
+</form>
+
+<h1>Produtos</h1> 
+<table> 
+    <thead> 
+        <tr>  
+            <th>Descrição</th> 
+            <th>Estoque Mínimo</th> 
+            <th>Estoque Máximo</th> 
+        </tr> 
+    </thead> 
+    <tbody> 
+        {% for produto in prod %} 
+        <tr>  
+            <td>{{ produto[1] }}</td> 
+            <td>{{ produto[2] }}</td> 
+            <td>{{ produto[3] }}</td> 
+            <td><form action="/delete/produto/{{produto.0}}" method="post">
+                <button>Apagar</button>
+            </form></td>
+            <td><a href="/update/produto/{{produto.0}}"><button>Atualizar</button></a></td>
+        </tr> 
+        {% else %}
+            Nao tem produtos cadastrados
+        {% endfor %} 
+        
+    </tbody> 
+</table> 
+<a href="/"><button>Voltar</button></a>
+{% endblock %}

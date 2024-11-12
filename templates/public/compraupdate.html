@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="/update/compra/{{compra.0}}" method="post">
+    <select name="id_produto">
+        <option selected value="{{compra.1}}">{{compra.6}}</option>
+        {% for produto in produto %}
+            <option value="{{produto.0}}">{{produto.1}}</option>
+        {% endfor %} 
+    </select>
+    <input type="number" name="qtde" value="{{compra.2}}" placeholder="Quantidade">
+    <input type="date" name="data_entrada" value="{{compra.4}}" placeholder="Data da Compra">
+    <input type="number" name="valor_unitario" value="{{compra.3}}" placeholder="Valor Unitário">
+    <button type="submit">Atualizar</button>
+</form>
+
+
+{% endblock %}

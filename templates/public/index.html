@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<h1>Estoque</h1> 
+<table> 
+    <thead> 
+        <tr> 
+            <th>Produto</th> 
+            <th>Quantidade</th> 
+            <th>Valor Unitário</th> 
+        </tr> 
+    </thead> 
+    <tbody> 
+        {% for produto in data %} 
+        <tr> 
+            <td>{{ produto[5] }}</td> 
+            <td>{{ produto[2] }}</td> 
+            <td>{{ produto[3] }}</td> 
+        </tr>
+        
+        {% else %}
+            Nao tem produtos cadastrados
+        {% endfor %} 
+        
+    </tbody> 
+</table> 
+<a href="/produto"><button>Produtos</button></a> 
+<a href="/venda"><button>Vendas</button></a>
+<a href="/compra"><button>Compras</button></a>
+
+{% endblock %}

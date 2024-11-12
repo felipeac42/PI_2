@@ -1,0 +1,6 @@
+comandos do terminal
+
+<python -m venv (nome da pasta do environment)> - cria o virtual environment
+<(nome da pasta do environment)/scripts/activate> - ativa o virtual environment
+<pip intall flask> - instala o framework Flask
+<pip install pymysql> - instala o driver do mysql
